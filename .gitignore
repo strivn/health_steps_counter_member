@@ -1,0 +1,6 @@
+data/
+.DS_Store
+*.pt
+.venv/
+*.yaml
+*.json

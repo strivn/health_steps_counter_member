@@ -1,0 +1,12 @@
+# change filename to config.yaml 
+
+api_name: 'health_steps_counter'
+aggregator_datasite: '[YOUR_EMAIL]'
+
+filepath: '[PATH_TO_APPLE_HEALTH_EXPORT]'
+
+parameters:
+  type: 'HKQuantityTypeIdentifierStepCount'
+  epsilon: 0.5
+  bounds: 'auto-local'
+
