@@ -33,9 +33,9 @@ def validate_config(config):
 # Following code is from https://github.com/OpenMined/cpu_tracker_member/blob/main/main.py
 def create_restricted_public_folder(filepath: Path) -> None:
     """
-    Create an output folder for CPU tracker data within the specified path.
+    Create an output folder for Health Steps data within the specified path.
 
-    This function creates a directory structure for storing CPU tracker data under `api_data/cpu_tracker`. If the directory
+    This function creates a directory structure for storing Health Steps data under `api_data`. If the directory
     already exists, it will not be recreated. Additionally, default permissions for accessing the created folder are set using the
     `SyftPermission` mechanism to allow the data to be read by an aggregator.
 
@@ -53,9 +53,9 @@ def create_restricted_public_folder(filepath: Path) -> None:
 
 def create_private_folder(filepath: Path) -> Path:
     """
-    Create a private folder for CPU tracker data within the specified path.
+    Create a private folder for Health Steps data within the specified path.
 
-    This function creates a directory structure for storing CPU tracker data under `private/cpu_tracker`.
+    This function creates a directory structure for storing Health Steps data under `private/cpu_tracker`.
     If the directory already exists, it will not be recreated. Additionally, default permissions for
     accessing the created folder are set using the `SyftPermission` mechanism, allowing the data to be
     accessible only by the owner's email.
@@ -64,9 +64,9 @@ def create_private_folder(filepath: Path) -> Path:
         path (Path): The base path where the output folder should be created.
 
     Returns:
-        Path: The path to the created `cpu_tracker` directory.
+        Path: The path to the created `health` directory.
     """
-    path: Path = filepath / "private" / "cpu_tracker"
+    path: Path = filepath / "private" / "health_steps_counter"
     os.makedirs(path, exist_ok=True)
 
     # Set default permissions for the created folder
@@ -191,10 +191,10 @@ if __name__ == '__main__':
     logger.info(f"Test: {public_mean_file}")
     logger.info(f"Test: {private_mean_file}")
 
-    summary_df.set_index("date").T.to_json("daily_steps.json")
-    dp_df.set_index("date").T.to_json("dp_daily_steps.json")
+    # summary_df.set_index("date").T.to_json("daily_steps.json")
+    # dp_df.set_index("date").T.to_json("dp_daily_steps.json")
     
-    # summary_df.to_json(public_mean_file)
-    # dp_df.to_json(private_mean_file)
+    summary_df.set_index("date").T.to_json(private_mean_file)
+    dp_df.set_index("date").T.to_json(public_mean_file)
 
     logger.info("Exported the results")
