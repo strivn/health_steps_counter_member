@@ -1,7 +1,7 @@
 # change filename to config.yaml 
 
 api_name: 'health_steps_counter'
-aggregator_datasite: '[YOUR_EMAIL]'
+aggregator_datasite: 'inbox.ivn@gmail.com'
 
 filepath: '[PATH_TO_APPLE_HEALTH_EXPORT]'
 

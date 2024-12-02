@@ -2,4 +2,26 @@
 
 --- 
 
-Share daily steps count with differential privacy
+The member script reads exported Apple Health Data, seek for step count data, and create a differentially private dataset to share with the aggregator datasites. 
+
+Dependent on Syftbox, see: https://syftbox-documentation.openmined.org
+
+Steps to install:
+1. Export data from Apple Health (go to Apple Health, profile, export data)
+2. Save it on your local device
+3. Copy `config.yaml.template` and save it as `config.yaml`
+4. Change 'filepath' to the export data location
+5. Feel free to change epsilon, but the rest aren't "changeable" just yet (to be updated on further iterations!)
+
+
+Config file explanation: 
+
+- `api_name`: `'health_steps_counter'` / do not change, placeholder for further use cases
+- `aggregator_datasite`: `'inbox.ivn[at]gmail.com'` / change aggregator datasite
+- `filepath`: `'[PATH_TO_APPLE_HEALTH_EXPORT]'` currently only step count is supported, placeholder for further use cases
+- `parameters`:
+  - `type`: `'HKQuantityTypeIdentifierStepCount'` / currently only step count is supported, placeholder for further use cases
+  - `epsilon`: `0.5` / change to any non-negative number 
+  - `bounds`: `'auto-local'` / currently only 'auto-local' is supported, placeholder for further use cases
+
+
