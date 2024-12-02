@@ -4,3 +4,4 @@ data/
 .venv/
 *.yaml
 *.json
+*.ipynb
