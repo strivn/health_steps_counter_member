@@ -201,15 +201,21 @@ if __name__ == '__main__':
 
     if should_run(filepath):
         logger.info("Loading health records ...")
-        with open(filepath, 'rb') as f:
-            data = f.read()
 
-        with zipfile.ZipFile(BytesIO(data)) as zip_ref:            
-                with zip_ref.open('apple_health_export/export.xml') as f:
-                    file_content = f.read()
+        if filepath.endswith('.zip'):
+            logger.info("Unzipping the file")
+            with open(filepath, 'rb') as f:
+                data = f.read()
+
+            with zipfile.ZipFile(BytesIO(data)) as zip_ref:            
+                    with zip_ref.open('apple_health_export/export.xml') as f:
+                        file_content = f.read()
+        else:
+            with open(filepath, 'r') as f:
+                file_content = f.read()
 
         if not file_content:
-            logger.error("No file found named apple_health_export/export.xml")
+            logger.error("No export file found named")
 
         soup = BeautifulSoup(file_content, features='xml')
         records = soup.find_all("Record")
