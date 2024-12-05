@@ -1,10 +1,13 @@
 # Imports
+from io import BytesIO
 import yaml
 import logging
 import os
 import hashlib
 import datetime
 import json
+import zipfile
+
 
 import pandas as pd
 import numpy as np
@@ -197,12 +200,18 @@ if __name__ == '__main__':
     bounds_config = config['parameters']['bounds']
 
     if should_run(filepath):
-
         logger.info("Loading health records ...")
-        with open(filepath, 'r') as f:
+        with open(filepath, 'rb') as f:
             data = f.read()
 
-        soup = BeautifulSoup(data, features='xml')
+        with zipfile.ZipFile(BytesIO(data)) as zip_ref:            
+                with zip_ref.open('apple_health_export/export.xml') as f:
+                    file_content = f.read()
+
+        if not file_content:
+            logger.error("No file found named apple_health_export/export.xml")
+
+        soup = BeautifulSoup(file_content, features='xml')
         records = soup.find_all("Record")
 
         data_list = []

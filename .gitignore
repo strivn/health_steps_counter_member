@@ -4,3 +4,6 @@ data/
 .venv/
 *.yaml
 *.json
+.env
+logs/
+__pycache__/
