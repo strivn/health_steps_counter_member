@@ -4,4 +4,7 @@ data/
 .venv/
 *.yaml
 *.json
+.env
+logs/
+__pycache__/
 *.ipynb
