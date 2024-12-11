@@ -8,3 +8,7 @@ data/
 logs/
 __pycache__/
 *.ipynb
+*.bin
+config.py
+hashes/health_steps_counter_last_run
+hashes/

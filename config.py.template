@@ -1,0 +1,15 @@
+# config.py
+
+DEVELOPMENT = True
+
+# API Configuration
+API_NAME = 'health_steps_counter'
+AGGREGATOR_DATASITE = 'inbox.ivn@gmail.com'
+FILEPATH = '' # Path to exported Apple Health data
+
+# Parameters
+PARAMETERS = {
+    'type': 'HKQuantityTypeIdentifierStepCount',
+    'epsilon': 0.5,
+    'bounds': 'auto-local'
+}
