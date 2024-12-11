@@ -7,12 +7,13 @@ The member script reads exported Apple Health Data, seek for step count data, an
 Built on top of Syftbox, see: https://syftbox-documentation.openmined.org
 
 ## Steps to Install 
-1. Run `syftbox app install strivn/health_steps_counter_member`
-2. Export data from Apple Health (go to Apple Health, profile, export data)
-3. Save it on your local device
-4. Copy `config.yaml.template` and save it as `config.yaml`
-5. Change 'filepath' to the export data location
-6. Feel free to change epsilon, but the rest aren't "changeable" just yet (to be updated on further iterations!)
+1. Install Syftbox, if haven't
+2. Run `syftbox app install strivn/health_steps_counter_member`
+3. Export data from Apple Health (go to Apple Health, profile, export data)
+4. Save it on your local device
+5. Copy `config.py.template` and save it as `config.py`
+6. Change 'filepath' to the export data location. You can use either the zip file or the 'export.xml' file if you have unzipped it.
+7. Feel free to change epsilon, but the rest aren't "changeable" just yet (to be updated on further iterations!)
 
 
 ## Config File 
